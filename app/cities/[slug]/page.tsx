@@ -81,6 +81,33 @@ function parsePlace(data: any): PlaceData[] {
   }) ?? []
 }
 
+export async function generateStaticParams() {
+  storyblokInit({
+    accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN || "ieyX2fb92PPcodmQMyvpkwtt",
+    use: [apiPlugin],
+  })
+
+  const storyblokApi = getStoryblokApi()
+
+  try {
+    const { data } = await storyblokApi.get(`cdn/stories`, {
+      version: "draft",
+      starts_with: "cities/",
+    })
+
+    if (!data || !data.stories) {
+      throw new Error("Aucune donnée trouvée")
+    }
+
+    return data.stories.map((story: any) => {
+      return { slug: story.slug }
+    })
+  } catch (error) {
+    console.error("Erreur lors de la récupération des données :", error)
+    return <div>Une erreur est survenue lors du chargement des villes.</div>
+  }
+}
+
 export default async function CityPage({ params }: any) {
   const { slug } = await params
 
