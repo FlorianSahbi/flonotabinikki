@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Christella Guide",
-  description: "Un guide pour aider Christella avec son voyage vers le Japon",
+  description: "Un guide pour aiguiller Christella dans la mise en place de son planning pour son voyage au Japon en mai !",
 };
 
 export default function RootLayout({
