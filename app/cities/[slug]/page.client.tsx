@@ -86,8 +86,6 @@ export default function CityPageClient({ data }: CityPageClientProps) {
     )
   }
 
-  console.log(data)
-
   return (
     <main className={css.City}>
       <div className={css.grid}>

@@ -17,6 +17,8 @@ interface PlaceData {
   recommendationLevel: number
 }
 
+export const revalidate = 60
+
 function parseCity(data: any): CityData {
   const { name, coordinates, recommendationLevel, recommendation } = data.story.content
   const WHY = "Pourquoi venir ?"
@@ -24,9 +26,6 @@ function parseCity(data: any): CityData {
   const SEE = "QUE VOIR ?"
   const ADVICE = "CONSEIL ASTUCE ?"
   const HISTORY = "HISTOIRE ?"
-
-
-  console.log(data?.story?.content)
 
   return {
     name: name ?? "Nom non disponible",
