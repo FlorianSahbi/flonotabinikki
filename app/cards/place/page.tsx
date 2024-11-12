@@ -4,7 +4,7 @@ import css from "./page.module.scss"
 import { useRouter } from 'next/navigation'
 import React from "react"
 import Image from "next/image"
-import { Notation } from "../notation/page"
+import Notation from "../notation/page"
 
 interface CityData {
   name: string
@@ -13,7 +13,7 @@ interface CityData {
   fullSlug: string
 }
 
-export const PlaceCard = React.memo(({ name, coordinates, recommendationLevel, fullSlug, onFlyTo }: any & { onFlyTo: (lng: number, lat: number) => void }) => {
+function PlaceCard({ name, coordinates, recommendationLevel, fullSlug, onFlyTo }: any & { onFlyTo: (lng: number, lat: number) => void }) {
   const router = useRouter();
   return (
     <div className={css.PlaceCard} onClick={() => onFlyTo(coordinates[0], coordinates[1])}>
@@ -51,4 +51,6 @@ export const PlaceCard = React.memo(({ name, coordinates, recommendationLevel, f
 
     </div>
   );
-});
+};
+
+export default React.memo(PlaceCard);

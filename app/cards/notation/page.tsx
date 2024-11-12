@@ -3,7 +3,7 @@
 import css from "./page.module.scss"
 import React from "react"
 
-export const Notation = ({ number }: { number: number }) => {
+export default function Notation({ number }: any) {
   if (number <= 0) {
     return null;
   }

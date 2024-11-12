@@ -4,7 +4,7 @@ import css from "./page.module.scss"
 import MapComponent from "../map/page"
 import { useRef, useCallback } from "react"
 import React from "react"
-import { CityCard } from "../cards/city/page"
+import CityCard from "@/app/cards/city/page";
 
 interface CityData {
   name: string

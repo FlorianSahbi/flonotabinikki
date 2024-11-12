@@ -5,8 +5,8 @@ import css from "./page.module.scss";
 import { useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { render } from 'storyblok-rich-text-react-renderer';
-import { PlaceCard } from "@/app/cards/place/page";
-import { Navigation } from "@/app/navigation/page";
+import Navigation from "@/app/navigation/page";
+import PlaceCard from "@/app/cards/place/page";
 
 interface GeoLabelProps {
   label: string;

@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import css from "./page.module.scss"
 import React from "react"
 
-export const Navigation = () => {
+export default function Navigation() {
   const router = useRouter()
 
   return (
