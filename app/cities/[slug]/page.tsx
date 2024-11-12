@@ -8,6 +8,7 @@ interface CityData {
   fullSlug: string
   slug: string
   reco: string
+  page: any
 }
 
 interface PlaceData {
@@ -18,6 +19,15 @@ interface PlaceData {
 
 function parseCity(data: any): CityData {
   const { name, coordinates, recommendationLevel, recommendation } = data.story.content
+  const WHY = "Pourquoi venir ?"
+  const WHERE = "Ou loger ?"
+  const SEE = "QUE VOIR ?"
+  const ADVICE = "CONSEIL ASTUCE ?"
+  const HISTORY = "HISTOIRE ?"
+
+
+  console.log(data?.story?.content)
+
   return {
     name: name ?? "Nom non disponible",
     coordinates: coordinates?.[0] ? [coordinates[0].lng, coordinates[0].lat] : [0, 0],
@@ -25,6 +35,38 @@ function parseCity(data: any): CityData {
     fullSlug: data.story.full_slug,
     slug: data.story.slug,
     reco: recommendation ?? "Aucune recommandation disponible",
+    page: [
+      {
+        title: data?.story?.content?.title[0].title ?? null,
+        text: data?.story?.content?.title[0].text ?? null,
+        withSeparator: data?.story?.content?.title[0].with_separator ?? null
+      },
+      {
+        title: WHY,
+        text: data?.story?.content?.why[0].text ?? null,
+        withSeparator: data?.story?.content?.why[0].with_separator ?? null
+      },
+      {
+        title: WHERE,
+        text: data?.story?.content?.where[0].text ?? null,
+        withSeparator: data?.story?.content?.where[0].with_separator ?? null
+      },
+      {
+        title: SEE,
+        text: data?.story?.content?.see[0].text ?? null,
+        withSeparator: data?.story?.content?.see[0].with_separator ?? null
+      },
+      {
+        title: ADVICE,
+        text: data?.story?.content?.advice[0].text ?? null,
+        withSeparator: data?.story?.content?.advice[0].with_separator ?? null
+      },
+      {
+        title: HISTORY,
+        text: data?.story?.content?.history[0].text ?? null,
+        withSeparator: data?.story?.content?.history[0].with_separator ?? null
+      },
+    ]
   }
 }
 
@@ -40,7 +82,7 @@ function parsePlace(data: any): PlaceData[] {
 }
 
 export default async function CityPage({ params }: any) {
-  const { slug } = params
+  const { slug } = await params
 
   storyblokInit({
     accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN || "ieyX2fb92PPcodmQMyvpkwtt",

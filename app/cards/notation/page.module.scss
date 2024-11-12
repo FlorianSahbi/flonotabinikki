@@ -1,0 +1,12 @@
+.Notation {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+
+  .notationDot {
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    background-color: #ff9eb5;
+  }
+}

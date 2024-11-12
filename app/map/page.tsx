@@ -45,8 +45,8 @@ const MapComponent = forwardRef<any, MapComponentProps>(
     }, [data]);
 
     useImperativeHandle(ref, () => ({
-      flyTo: (lng: number, lat: number, zoom = 5) => {
-        mapRef.current?.flyTo({ center: [lng, lat], zoom, speed: 1.1, curve: 1 });
+      flyTo: ({ lng, lat, zoom, speed, curve }: { lng: number, lat: number, zoom: number, speed: number, curve: number }) => {
+        mapRef.current?.flyTo({ center: [lng, lat], zoom, speed, curve });
       },
     }));
 

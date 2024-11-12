@@ -5,6 +5,8 @@ import css from "./page.module.scss";
 import { useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { render } from 'storyblok-rich-text-react-renderer';
+import { PlaceCard } from "@/app/cards/place/page";
+import { Navigation } from "@/app/navigation/page";
 
 interface GeoLabelProps {
   label: string;
@@ -16,6 +18,7 @@ interface CityPageClientProps {
     name: string;
     coordinates: [number, number];
     reco: any;
+    page: any;
     places: Array<{
       name: string;
       coordinates: [number, number];
@@ -29,7 +32,7 @@ export default function CityPageClient({ data }: CityPageClientProps) {
 
   const handleFlyTo = useCallback((lng: number, lat: number) => {
     if (mapRef.current) {
-      mapRef.current.flyTo({ center: [lng, lat], zoom: 15, speed: 1.2, curve: 1 });
+      mapRef.current.flyTo({ lng, lat, zoom: 17, speed: 1.2, curve: 1 });
     }
   }, []);
 
@@ -61,45 +64,50 @@ export default function CityPageClient({ data }: CityPageClientProps) {
     );
   }
 
+  function Edito({ title, withSeparator, text }: { title: any, withSeparator: boolean, text: any }) {
+    return (
+
+      <div className={css.info}>
+        <div className={css.edito}>
+          <h2>{title}</h2>
+          <RichText document={text} />
+        </div>
+      </div>
+    )
+  }
+
+  function Title({ title, withSeparator, text }: { title: any, withSeparator: boolean, text: any }) {
+    return (
+      <div className={css.title}>
+        <h1>{title}</h1>
+        <span />
+        <RichText document={text} />
+      </div>
+    )
+  }
+
+  console.log(data)
 
   return (
     <main className={css.City}>
       <div className={css.grid}>
         <div className={css.left}>
-          <div className={css.header}>
-            <div className={css.backButton} onClick={() => router.push('/cities')}>
-              Retour
-            </div>
-            <div className={css.navigationButtons}>
-              <div>Precedent</div>
-              <div>Suivant</div>
-            </div>
-          </div>
+          <Navigation />
+
+          <Title {...data.page[0]} />
+
           <div className={css.textContent}>
-            <h1>{data.name}</h1>
-            <RichText document={data.reco} />
+            {data.page.slice(1).map((e: any, index: number) => {
+              return (
+                <Edito key={index} {...e} />
+              )
+            })}
 
-            <div className={css.section}>
-              <h1>Que voir ?</h1>
+            <div className={css.cards}>
+              {data.places.map((place, index) => (
+                <PlaceCard key={index} {...place} onFlyTo={handleFlyTo} />
+              ))}
             </div>
-
-            <h1>Itineraire de visite recommandé?</h1>
-            <p>faire si puis ça puis passer par la avant de faire ça</p>
-
-            {data.places.map((place, index) => (
-              <div
-                key={index}
-                className={css.placeCard}
-                onClick={() => handleFlyTo(place.coordinates[0], place.coordinates[1])}
-              >
-                <h2>{place.name}</h2>
-                <p>OOO</p>
-                <p>Accessible en 15min</p>
-                <p>Gratuit</p>
-                <p>Site : okokokoko</p>
-                <p>Grand temple bouddhiste avec le plus grand Bouddha allongé du monde et de nombreuses structures.</p>
-              </div>
-            ))}
           </div>
         </div>
 
