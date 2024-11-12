@@ -5,6 +5,7 @@ interface StoryContent {
   name: string
   coordinates: { lng: number; lat: number }[]
   recommendationLevel: number
+  image: any
 }
 
 interface Story {
@@ -15,8 +16,10 @@ interface Story {
 
 function parseCities(data: Story[]) {
   return data.map((story) => {
-    const { name, coordinates, recommendationLevel } = story.content
+    const { name, coordinates, recommendationLevel, image } = story.content
+
     return {
+      image: image?.filename ?? "https://www.gotokyo.org/en/destinations/western-tokyo/shibuya/images/main.jpg",
       name: name ?? "Nom non disponible",
       coordinates: coordinates?.[0] ? [coordinates[0].lng, coordinates[0].lat] : [0, 0],
       recommendationLevel: recommendationLevel ?? "Non spécifié",

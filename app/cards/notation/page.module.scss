@@ -2,10 +2,11 @@
   display: flex;
   justify-content: center;
   gap: 6px;
+  width: fit-content;
 
   .notationDot {
-    height: 6px;
-    width: 6px;
+    height: 8px;
+    width: 8px;
     border-radius: 50%;
     background-color: #ff9eb5;
   }

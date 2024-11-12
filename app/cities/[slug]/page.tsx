@@ -9,18 +9,20 @@ interface CityData {
   slug: string
   reco: string
   page: any
+  image: any
 }
 
 interface PlaceData {
   name: string
   coordinates: [number, number]
   recommendationLevel: number
+  image: any
 }
 
 export const revalidate = 60
 
 function parseCity(data: any): CityData {
-  const { name, coordinates, recommendationLevel, recommendation } = data.story.content
+  const { name, coordinates, recommendationLevel, recommendation, image } = data.story.content
   const WHY = "Pourquoi venir ?"
   const WHERE = "Ou loger ?"
   const SEE = "QUE VOIR ?"
@@ -33,6 +35,7 @@ function parseCity(data: any): CityData {
     recommendationLevel: recommendationLevel ?? "Non spécifié",
     fullSlug: data.story.full_slug,
     slug: data.story.slug,
+    image: image?.filename ?? "https://www.gotokyo.org/en/destinations/western-tokyo/shibuya/images/main.jpg",
     reco: recommendation ?? "Aucune recommandation disponible",
     page: [
       {
@@ -51,11 +54,6 @@ function parseCity(data: any): CityData {
         withSeparator: data?.story?.content?.where[0].with_separator ?? null
       },
       {
-        title: SEE,
-        text: data?.story?.content?.see[0].text ?? null,
-        withSeparator: data?.story?.content?.see[0].with_separator ?? null
-      },
-      {
         title: ADVICE,
         text: data?.story?.content?.advice[0].text ?? null,
         withSeparator: data?.story?.content?.advice[0].with_separator ?? null
@@ -65,17 +63,25 @@ function parseCity(data: any): CityData {
         text: data?.story?.content?.history[0].text ?? null,
         withSeparator: data?.story?.content?.history[0].with_separator ?? null
       },
+      {
+        title: SEE,
+        text: data?.story?.content?.see[0].text ?? null,
+        withSeparator: data?.story?.content?.see[0].with_separator ?? null
+      },
     ]
   }
 }
 
 function parsePlace(data: any): PlaceData[] {
   return data?.rels?.map((place: any) => {
-    const { name, coordinates, recommendationLevel } = place.content
+    const { name, coordinates, recommendation_level, image, map, description } = place.content
     return {
+      map: map ?? "#",
+      image: image?.filename ?? "https://www.gotokyo.org/en/destinations/western-tokyo/shibuya/images/main.jpg",
       name: name ?? "Nom non disponible",
+      description: description ?? "",
       coordinates: coordinates?.[0] ? [coordinates[0].lng, coordinates[0].lat] : [0, 0],
-      recommendationLevel: recommendationLevel ?? "Non spécifié",
+      recommendationLevel: recommendation_level ?? 0,
     }
   }) ?? []
 }

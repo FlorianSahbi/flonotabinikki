@@ -5,6 +5,7 @@ import MapComponent from "../map/page"
 import { useRef, useCallback } from "react"
 import React from "react"
 import CityCard from "@/app/cards/city/page";
+import Notation from "../cards/notation/page"
 
 interface CityData {
   name: string
@@ -31,8 +32,24 @@ export default function CitiesPageClient({ data }: CitiesPageClientProps) {
       <div className={css.wrapper}>
         <div className={css.left}>
           <div className={css.title}>
-            <h2>Lieux que j'ai visités</h2>
-            <p>Ici une liste des lieux que j'ai visités</p>
+            <h2>Villes visitées</h2>
+            <p>La liste des villes que j'ai eu la chance de visiter, bonnes comme mauvaises</p>
+            <div style={{ marginTop: '.5em', display: "flex", flexDirection: "column", gap: ".5em",  border: "1px solid lightgrey", padding: "4px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                <Notation number={1} left />
+                <p>Si tu passes à côté, pourquoi pas</p>
+              </div>
+
+              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                <Notation number={2} left />
+                <p>Vaut le détour</p>
+              </div>
+
+              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                <Notation number={3} left />
+                <p>Peut justifier à lui seul de changer ton itinéraire pour l'inclure</p>
+              </div>
+            </div>
           </div>
 
           <div className={css.cards}>

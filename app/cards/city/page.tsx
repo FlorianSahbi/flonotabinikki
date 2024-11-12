@@ -14,7 +14,7 @@ interface CityData {
   fullSlug: string
 }
 
-function CityCard({ name, coordinates, recommendationLevel, fullSlug, onFlyTo }: any) {
+function CityCard({ name, coordinates, recommendationLevel, fullSlug, image, onFlyTo }: any) {
   const router = useRouter();
   return (
     <div className={css.CityCard}>
@@ -22,22 +22,24 @@ function CityCard({ name, coordinates, recommendationLevel, fullSlug, onFlyTo }:
         <Image
           className={css.image}
           alt={name}
-          src="https://www.gotokyo.org/en/destinations/western-tokyo/shibuya/images/main.jpg"
+          src={image}
           fill
           objectFit="cover"
         />
       </div>
-      <div className={css.title}>
-        <h2>{name}</h2>
-        <Notation number={recommendationLevel} />
-      </div>
 
       <div className={css.actions}>
         <div className={css.viewMap} onClick={() => onFlyTo(coordinates[0], coordinates[1])}>
-          Voir sur la carte
+          Position
         </div>
+
+        <div className={css.title}>
+          <h2>{name}</h2>
+          <Notation number={recommendationLevel} fs />
+        </div>
+
         <div className={css.viewRecommendations} onClick={() => router.push(`/${fullSlug}`)}>
-          Voir mes recommandations
+          Découvrir
         </div>
       </div>
     </div>

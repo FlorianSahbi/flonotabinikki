@@ -8,6 +8,11 @@
   padding: .5em;
   border-bottom: 1px solid red;
 
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
   .imageWrapper {
     aspect-ratio: 16 / 9;
     min-width: 150px;
@@ -22,6 +27,7 @@
       font-weight: bold;
       text-transform: uppercase;
       color: #333;
+      margin-bottom: 6px;
     }
 
     span {

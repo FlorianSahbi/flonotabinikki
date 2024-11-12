@@ -30,18 +30,15 @@ export default function CityPageClient({ data }: CityPageClientProps) {
   const mapRef = useRef<any>(null);
   const router = useRouter();
 
-  const handleFlyTo = useCallback((lng: number, lat: number) => {
+  const handleFlyTo = useCallback((lng: number, lat: number, zoom?: number) => {
     if (mapRef.current) {
-      mapRef.current.flyTo({ lng, lat, zoom: 17, speed: 1.2, curve: 1 });
+      mapRef.current.flyTo({ lng, lat, zoom: zoom ?? 17, speed: 1.2, curve: 1 });
     }
   }, []);
 
-  function GeoLabel({ label, coordinates }: GeoLabelProps) {
+  function GeoLabel({ label, coordinates }: any) {
     return (
-      <span
-        style={{ color: coordinates ? "blue" : "red" }}
-        onClick={coordinates ? () => handleFlyTo(coordinates.lng, coordinates.lat) : undefined}
-      >
+      <span onClick={coordinates ? () => handleFlyTo(coordinates[0].lng, coordinates[0].lat, 19) : undefined}>
         {label}
       </span>
     );
@@ -96,8 +93,9 @@ export default function CityPageClient({ data }: CityPageClientProps) {
 
           <div className={css.textContent}>
             {data.page.slice(1).map((e: any, index: number) => {
+
               return (
-                <Edito key={index} {...e} />
+                !e.withSeparator ? <Edito key={index} {...e} /> : null
               )
             })}
 

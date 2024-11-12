@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
         hostname: 'www.gotokyo.org',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'a.storyblok.com',
+        port: '',
+      },
     ],
   },
 };
