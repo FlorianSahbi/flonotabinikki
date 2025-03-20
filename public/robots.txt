@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /fr/conclusion
+Allow: /ja/conclusion
+Disallow: /
+Sitemap: https://ton-site.com/sitemap.xml

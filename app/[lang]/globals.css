@@ -136,14 +136,16 @@ table {
 }
 
 html {
-  font-family: 'Inter', sans-serif; /* Ou 'Merriweather', serif */
-  font-size: 18px; /* Taille optimale pour les longs textes */
-  line-height: 1.75; /* Espacement optimal entre les lignes */
-  letter-spacing: 0.03em; /* Légère augmentation de l’espacement entre les lettres */
-  word-spacing: 0.05em; /* Améliore la lisibilité */
+  font-size: 18px;
+  line-height: 1.75;
+  letter-spacing: 0.03em;
+  word-spacing: 0.05em;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-weight: 600;
 }
 
@@ -161,6 +163,7 @@ h3 {
 
 @media (max-width: 768px) {
   html {
-    font-size: 16px; /* Réduit légèrement la taille sur mobile */
+    font-size: 16px;
+    /* Réduit légèrement la taille sur mobile */
   }
 }
