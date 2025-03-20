@@ -56,7 +56,7 @@ export default function ConclusionClientPage({ data }: any) {
           priority={true}
           className={css.image}
           alt="Tokyo Skyline"
-          src="https://www.gotokyo.org/en/destinations/western-tokyo/shibuya/images/main.jpg"
+          src="/headerbg.jpg"
           fill
           objectFit="cover"
         />
