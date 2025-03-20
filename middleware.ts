@@ -7,7 +7,7 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const allowedPaths = ['/fr/conclusion', '/ja/conclusion'];
+  const allowedPaths = ['/fr/conclusion', '/ja/conclusion', '/robots.txt'];
 
   if (!allowedPaths.includes(url.pathname)) {
     return NextResponse.redirect(new URL('/fr/conclusion', req.url));
