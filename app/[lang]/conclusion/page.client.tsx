@@ -14,8 +14,19 @@ export default function ConclusionClientPage({ data }: any) {
       setIsScrolled(window.scrollY > 0);
     };
 
+    const handlePageRestore = (event: Event) => {
+      if ((event as PageTransitionEvent).persisted) {
+        setIsScrolled(false);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("pageshow", handlePageRestore);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("pageshow", handlePageRestore);
+    };
   }, []);
 
   return (
@@ -29,7 +40,6 @@ export default function ConclusionClientPage({ data }: any) {
       </header>
 
       <motion.div
-        key="imageWrapper"
         className={css.imageWrapper}
         animate={{ opacity: isScrolled ? 0 : 1 }}
         transition={{ duration: 0.3 }}
