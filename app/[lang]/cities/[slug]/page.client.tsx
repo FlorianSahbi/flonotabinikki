@@ -1,12 +1,12 @@
 'use client';
 
-import MapComponent from "@/app/map/page";
+import MapComponent from "@/app/[lang]/map/page";
 import css from "./page.module.scss";
 import { useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { render } from 'storyblok-rich-text-react-renderer';
-import Navigation from "@/app/navigation/page";
-import PlaceCard from "@/app/cards/place/page";
+import Navigation from "@/app/[lang]/navigation/page";
+import PlaceCard from "@/app/[lang]/cards/place/page";
 
 interface GeoLabelProps {
   label: string;

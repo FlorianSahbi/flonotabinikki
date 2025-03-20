@@ -1,0 +1,120 @@
+.Conclusion {
+  background-color: #121314;
+
+  .header {
+    border-bottom: 5px solid #292929;
+    height: 10vh;
+    width: 100%;
+    z-index: 10;
+    position: fixed;
+    background-color: #0A0A0B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5em;
+
+    .langs {
+      display: flex;
+      gap: 1em;
+
+      a {
+        color: white;
+        color: #C8AA6E;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+    }
+
+    h1 {
+      font-size: 30px;
+      color: #F0E6D2;
+      text-transform: uppercase;
+      text-align: left;
+    }
+  }
+
+  .imageWrapper {
+    min-height: 100dvh;
+    top: 0;
+    position: sticky;
+    z-index: 0;
+    pointer-events: none;
+    justify-content: center;
+    align-items: center;
+
+    .gradientOverlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    .mainTitle {
+      position: relative;
+      z-index: 2;
+      top: 50vh;
+      font-size: 60px;
+      color: #F0E6D2;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 0 1em;
+    }
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    padding: 15vh 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 1em;
+    margin-bottom: 1em;
+    box-sizing: border-box;
+
+    .texts {
+      max-width: 620px;
+    }
+  }
+
+  p {
+    color: #f0e6d2;
+    font-size: 18px;
+    padding: 10px 0;
+    text-align: left;
+  }
+
+  h2 {
+    color: #C8AA6E;
+    margin-top: 1em;
+  }
+
+  .footer {
+    height: 10vh;
+    border-top: 5px solid #292929;
+    background-color: #111111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      color: white;
+      color: #C8AA6E;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .Conclusion {
+    .imageWrapper {
+      .mainTitle {
+        font-size: 40px;
+      }
+    }
+  }
+}

@@ -109,7 +109,7 @@ section {
 
 body {
   line-height: 1;
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
 }
 
 ol,
@@ -133,4 +133,34 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+html {
+  font-family: 'Inter', sans-serif; /* Ou 'Merriweather', serif */
+  font-size: 18px; /* Taille optimale pour les longs textes */
+  line-height: 1.75; /* Espacement optimal entre les lignes */
+  letter-spacing: 0.03em; /* Légère augmentation de l’espacement entre les lettres */
+  word-spacing: 0.05em; /* Améliore la lisibilité */
+}
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 2.2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 16px; /* Réduit légèrement la taille sur mobile */
+  }
 }
