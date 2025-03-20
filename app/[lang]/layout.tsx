@@ -9,11 +9,7 @@ export const metadata: Metadata = {
   description: "Tout mon voyage résumé dans un site.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={inter.className}>
       <head>

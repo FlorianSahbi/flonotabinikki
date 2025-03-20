@@ -44,7 +44,14 @@ export default function ConclusionClientPage({ data }: any) {
         animate={{ opacity: isScrolled ? 0 : 1 }}
         transition={{ duration: 0.3 }}
       >
-        <h1 className={css.mainTitle}>{data[0].body}</h1>
+        <motion.h1
+          className={css.mainTitle}
+          initial={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          {data[0].body}
+        </motion.h1>
         <Image
           priority={true}
           className={css.image}
